@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
   const input = document.querySelector("input");
   const ul = document.getElementById("todo-list");
-  const removeAllTasksButton = document.querySelector(".remove-task-button");
+  const removeTasksButton = document.querySelector(".remove-task-button");
 
   class Todo {
     constructor(task) {
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     markTodoAsCompleted(task) {
       const todo = this.items.find((item) => item.task === task);
       if (todo) {
-        todo.completed = !todo.completed; // Toggle completion status
+        todo.completed = !todo.completed; 
         this.saveTodoToLocalStorage();
         this.renderToPage();
       }
@@ -47,17 +47,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     renderToPage() {
-      ul.innerHTML = ""; // Clear the existing list
+      ul.innerHTML = ""; 
 
       this.items.forEach((item) => {
         const li = document.createElement("li");
 
-        // Determine the status (completed or incomplete) and corresponding icon
         const status = item.completed ? "completed" : "incomplete";
         const icon = item.completed ? "fa-check-circle" : "fa-solid fa-check";
         const statusTextClass = item.completed
           ? "completed-text"
-          : "incomplete-text"; // Add status text class
+          : "incomplete-text"; 
 
         li.innerHTML = `
           <span class="task ${status}">${item.task}</span>
@@ -75,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
         ul.appendChild(li);
       });
 
-      // Add event listeners for the complete and delete buttons
       const completeButtons = ul.querySelectorAll(".complete-button");
       completeButtons.forEach((button, index) => {
         button.addEventListener("click", () => handleCompleteTask(index));
@@ -85,8 +83,14 @@ document.addEventListener("DOMContentLoaded", function () {
       deleteButtons.forEach((button, index) => {
         button.addEventListener("click", () => handleDeleteTask(index));
       });
+      if (this.items.length === 0) {
+        removeTasksButton.style.display = "none";
+      } else {
+        removeTasksButton.style.display = "block";
+      }
     }
   }
+
 
   const TODO_LIST = new TodoList();
 
@@ -113,25 +117,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function removeAllTasks() {    
-      // Get a list of all of the todo items
       const todoItems = TODO_LIST.items;
     
-      // Remove all of the todo items from the list
       todoItems.splice(0, todoItems.length);
     
-      // Update the local storage
       TODO_LIST.saveTodoToLocalStorage();
     
-      // Render the updated todo list
       TODO_LIST.renderToPage();
   }
-  removeAllTasksButton.addEventListener("click", removeAllTasks);
+  removeTasksButton.addEventListener("click", removeAllTasks);
   TODO_LIST.addTodo = function(todo) {
     this.items.push(todo);
     this.saveTodoToLocalStorage();
     this.renderToPage();
   
-    // Show the "Remove Task" button
     const removeTaskButton = document.querySelector(".remove-task-button");
     removeTaskButton.style.display = "block";
   };
