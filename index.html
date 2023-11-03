@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
-  <form>
-    <label for="text">Todo: </label>
-    <input type="text">
-    <button type="submit">Add Todo</button>
-  </form>
-  
-  <ul>
-  </ul>
-  
+    <div class="container">
+        <form>
+            <input type="text" placeholder="Add a new task" />
+            <button type="submit">Add</button>
+        </form>
+        <ul id="todo-list"></ul>
+        <button class="remove-task-button" style="display: none;">Remove Task</button>
+
+        <script src="script.js"></script>
+    </div>
 </body>
+
 </html>
