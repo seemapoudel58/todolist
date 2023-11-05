@@ -116,7 +116,7 @@ body {
     margin-top: 20px;
     font-size: 16px;
     margin-top:3rem;
-    border:2px solid red;
+    /* border:2px solid red; */
   }
   
   .completed-text {
