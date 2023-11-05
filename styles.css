@@ -17,12 +17,9 @@ body {
     margin-top:4rem;
     font-size: 40px;
     font-weight: bold;
-    color: #383333;
-    border-bottom: 3px solid #383333;
-
-
+     color: rgba(15, 28, 22, 0.712);
+    border-bottom: 3px solid rgba(15, 28, 22, 0.712);
   }
-
   .container {
     min-width: 70%;
     margin: 0 auto;
